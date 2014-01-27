@@ -16,16 +16,25 @@ type Challenge = {
     match parameters |> List.tryFind (fst >> (=) "realm") with
     | Some (k,v) ->  {Scheme=scheme; Parameters=parameters; Realm=v}
     | _ ->           {Scheme=scheme; Parameters=parameters; Realm=null}
+  static member ofScheme scheme =
+    {Scheme=scheme; Parameters=[]; Realm=null}
 
 let QUOTEDPARAM = TOKEN .>> skipString "=" .>>. QUOTEDSTRING
 
-let commaSep parser = sepBy parser (spaces .>> skipString "," .>> spaces)
+let followingCommaItem parser = (spaces .>> skipString "," .>> spaces) >>. parser
 
-let PARAMSLIST = commaSep QUOTEDPARAM 
+let commaSep1 parser = parser .>>.? many (attempt <| followingCommaItem parser) |>> function
+      | (x, []) -> [x]
+      | (x, xs) -> x::xs
 
-let CHALLENGE = TOKEN .>> skipString " " .>>. PARAMSLIST |>> Challenge.ofTuple
+//let commaSep parser = sepBy parser (spaces .>> skipString "," .>> spaces)
 
-let CHALLENGES = commaSep CHALLENGE 
+let PARAMSLIST = commaSep1 QUOTEDPARAM
+
+let CHALLENGE_WITH_PARAMS = TOKEN .>> skipString " " .>>. PARAMSLIST |>> Challenge.ofTuple
+let CHALLENGE_WITHOUT_PARAMS = TOKEN |>> Challenge.ofScheme
+
+let CHALLENGES = commaSep1 (attempt CHALLENGE_WITH_PARAMS <|> CHALLENGE_WITHOUT_PARAMS) 
 
 let parseChallenges s =
   match run CHALLENGES s with
