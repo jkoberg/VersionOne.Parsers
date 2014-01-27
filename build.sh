@@ -36,7 +36,7 @@ source ../build-tools/common.sh
 
 function create_assemblyinfo_fs() {
   cat > $1 <<EOF
-module AssemblyInfo
+module $PRODUCT_NAME.AssemblyInfo
 
 open System.Reflection
 
