@@ -94,6 +94,5 @@ MSBuild.exe $SOLUTION_FILE \
 
 # ---- Execute nspec tests -------------------------------------------
 
-# ./tests.sh
-
+"./packages/NUnit.Runners.*/tools/nunit-console.exe" "./VersionOne.Parsers.Tests/bin/$Configuration/VersionOne.Parsers.Tests.dll"
 
