@@ -57,6 +57,7 @@
     <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Primitives.fs" />
     <Compile Include="HTTP.Challenge.fs" />
     <None Include="packages.config" />
