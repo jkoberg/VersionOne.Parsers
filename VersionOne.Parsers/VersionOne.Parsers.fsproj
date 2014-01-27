@@ -9,9 +9,9 @@
     <OutputType>Library</OutputType>
     <RootNamespace>VersionOne.Parsers</RootNamespace>
     <AssemblyName>VersionOne.Parsers</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <TargetFSharpCoreVersion>4.3.1.0</TargetFSharpCoreVersion>
+    <TargetFSharpCoreVersion>4.3.0.0</TargetFSharpCoreVersion>
     <Name>VersionOne.Parsers</Name>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
