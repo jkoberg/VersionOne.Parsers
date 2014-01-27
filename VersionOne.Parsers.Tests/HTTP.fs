@@ -12,17 +12,17 @@ module HTTP =
 
   let [<Test>] ``handles single www-authenticate challenge`` () = 
     let sample = "Bearer realm=\"V1Production\", scope=\"apiv1\", error=\"invalid_token\""
-    parseChallenges sample =?= [ { Scheme = "Bearer"
-                                   Realm = "V1Production"
-                                   Parameters = [ "realm", "V1Production"
-                                                  "scope", "apiv1"  
-                                                  "error", "invalid_token" ] } ]
+    Challenge.parseChallenges sample =?= [{ Scheme = "Bearer"
+                                            Realm = "V1Production"
+                                            Parameters = [ "realm", "V1Production"
+                                                           "scope", "apiv1"  
+                                                           "error", "invalid_token" ] } ]
                                           
   let [<Test>] ``handles comma-joined www-authenticate challenges`` () = 
     let samples = [ "Bearer realm=\"V1Production\", scope=\"apiv1\", error=\"invalid_token\""
                     "Basic realm=\"V1Production\"" ]
     let sample = System.String.Join(", ", samples)
-    parseChallenges sample =?= [
+    Challenge.parseChallenges sample =?= [
 
       { Scheme = "Bearer"
         Realm = "V1Production"
@@ -41,7 +41,7 @@ module HTTP =
                     "Bearer realm=\"V1Production\", scope=\"apiv1\", error=\"invalid_token\""
                     ]
     let sample = System.String.Join(", ", samples)
-    parseChallenges sample =?= [
+    Challenge.parseChallenges sample =?= [
 
       { Scheme = "Negotiate"
         Realm = null
@@ -60,7 +60,7 @@ module HTTP =
                     "Negotiate" 
                     ]
     let sample = System.String.Join(", ", samples)
-    parseChallenges sample =?= [
+    Challenge.parseChallenges sample =?= [
 
       { Scheme = "Bearer"
         Realm = "V1Production"

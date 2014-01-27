@@ -58,7 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Primitives.fs" />
-    <Compile Include="HTTP.fs" />
+    <Compile Include="HTTP.Challenge.fs" />
     <None Include="packages.config" />
   </ItemGroup>
   <PropertyGroup>
