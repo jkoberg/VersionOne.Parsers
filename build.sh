@@ -88,11 +88,10 @@ MSBuild.exe $SOLUTION_FILE \
   -p:RequireRestoreConsent=false \
   -p:Configuration="$Configuration" \
   -p:Platform="$Platform" \
-  -p:Verbosity=Diagnostic \
-  -p:VisualStudioVersion=11.0
+  -p:Verbosity=Diagnostic
 
 
 # ---- Execute nspec tests -------------------------------------------
 
-"./packages/NUnit.Runners.*/tools/nunit-console.exe" "./VersionOne.Parsers.Tests/bin/$Configuration/VersionOne.Parsers.Tests.dll"
+"./packages/NUnit.Runners.2.6.3/tools/nunit-console.exe" "./VersionOne.Parsers.Tests/bin/$Configuration/VersionOne.Parsers.Tests.dll"
 
