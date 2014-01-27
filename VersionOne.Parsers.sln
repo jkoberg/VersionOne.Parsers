@@ -7,6 +7,11 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "VersionOne.Parsers", "Versi
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "VersionOne.Parsers.Tests", "VersionOne.Parsers.Tests\VersionOne.Parsers.Tests.fsproj", "{3E2B421B-07CB-4EDE-AC7F-136D32687CCB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{AD2FDFB2-8D2C-4626-B66B-F7C0256ED5ED}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
