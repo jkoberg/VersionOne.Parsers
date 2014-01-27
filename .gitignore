@@ -1,0 +1,12 @@
+
+
+.nuget/nuget.exe
+
+packages/
+bin/
+obj/
+
+*.suo
+
+*.DotSettings.user
+
