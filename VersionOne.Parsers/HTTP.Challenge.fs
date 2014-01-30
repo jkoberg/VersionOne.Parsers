@@ -11,9 +11,11 @@ type Challenge = {
   with
 
   static member ofTuple (scheme,parameters) =
-    match parameters |> List.tryFind (fst >> (=) "realm") with
-    | Some (k,v) ->  {Scheme=scheme; Parameters=parameters; Realm=v}
-    | _ ->           {Scheme=scheme; Parameters=parameters; Realm=null}
+    let realm =
+      match parameters |> List.tryFind (fst >> (=) "realm") with
+      | Some (k,v) ->  v
+      | _ -> null
+    {Scheme=scheme; Parameters=parameters; Realm=realm}
 
   static member ofScheme scheme =
     {Scheme=scheme; Parameters=[]; Realm=null}
@@ -35,3 +37,4 @@ type Challenge = {
     match run CHALLENGES s with
     | Success (cs, _, _) -> cs
     | _ as failure -> [] //failwith "Unable to parse WWW-Authenticate challenge"
+
