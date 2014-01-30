@@ -13,9 +13,7 @@ export GITHUB_WEB_URL="https://github.com/versionone/VersionOne.Parsers"
 export COPYRIGHT_RANGE="2013-2014"
 
 export Platform="Any CPU"
-export PLATFORM="$Platform"
 export EnableNugetPackageRestore="true"
 export Configuration="Release"
-export CONFIGURATION="$Configuration"
 
 
