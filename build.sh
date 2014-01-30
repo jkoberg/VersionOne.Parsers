@@ -9,26 +9,29 @@ set -ex
 # build steps. Variables local to this script can be defined below.
 . ./build.properties
 
+FSPROJNAMES="VersionOne.Parsers"
+
+
 # fix for jenkins inserting the windows-style path in $WORKSPACE
 cd "$WORKSPACE"
 export WORKSPACE=`pwd`
 
 
-
 # ----- Common ----------------------------------------------------------------
 # Common build script creates functions and variables expected by Jenkins.
-if [ -d $WORKSPACE/../build-tools ]; then
+TOOLSDIR="$WORKSPACE/build_tools"
+if [ -d "$TOOLSDIR" ]; then
   ## When script directory already exists, just update when there are changes.
-  cd $WORKSPACE/../build-tools
+  pushd "$TOOLSDIR"
   git fetch && git stash
   if ! git log HEAD..origin/master --oneline --quiet; then
     git pull
   fi
-  cd $WORKSPACE
+  popd
 else
-  git clone https://github.com/versionone/openAgile-build-tools.git $WORKSPACE/../build-tools
+  git clone https://github.com/versionone/openAgile-build-tools.git "$TOOLSDIR"
 fi
-source ../build-tools/common.sh
+source "$TOOLSDIR/common.sh"
 
 
 
@@ -54,9 +57,8 @@ EOF
 }
 
 
-COMPONENTS="VersionOne.Parsers"
-for COMPONENT_NAME in $COMPONENTS; do
-  create_assemblyinfo_fs "$WORKSPACE/$COMPONENT_NAME/AssemblyInfo.fs"
+for PROJNAME in $FSPROJNAMES; do
+  create_assemblyinfo_fs "$WORKSPACE/$PROJNAME/AssemblyInfo.fs"
 done
 
 
@@ -93,5 +95,6 @@ MSBuild.exe $SOLUTION_FILE \
 
 # ---- Execute nspec tests -------------------------------------------
 
-"./packages/NUnit.Runners.2.6.3/tools/nunit-console.exe" "./VersionOne.Parsers.Tests/bin/$Configuration/VersionOne.Parsers.Tests.dll"
+"./packages/NUnit.Runners.2.6.3/tools/nunit-console.exe" \
+    "./VersionOne.Parsers.Tests/bin/$Configuration/VersionOne.Parsers.Tests.dll"
 
