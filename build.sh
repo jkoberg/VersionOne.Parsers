@@ -108,6 +108,6 @@ MSBuild.exe $SOLUTION_FILE \
 
 for PROJNAME in $FSPROJNAMES; do
   pushd "$PROJNAME"
-    ../.nuget/nuget.exe pack "$PROJNAME.fsproj"
+    ../.nuget/nuget.exe pack "$PROJNAME.fsproj" -Properties Configuration="$Configuration";Platform="$Platform"
   popd
 done
