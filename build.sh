@@ -104,3 +104,10 @@ MSBuild.exe $SOLUTION_FILE \
 "./packages/NUnit.Runners.2.6.3/tools/nunit-console.exe" \
     "./VersionOne.Parsers.Tests/bin/$Configuration/VersionOne.Parsers.Tests.dll"
 
+# -- make nupkg
+
+for PROJNAME in $FSPROJNAMES; do
+  pushd "$PROJNAME"
+    ../.nuget/nuget.exe pack "$PROJNAME.fsproj"
+  popd
+done
