@@ -9,6 +9,10 @@ set -ex
 # build steps. Variables local to this script can be defined below.
 . ./build.properties
 
+
+#export VERSION=`date -u +"$MAJOR.$MINOR.%Y%m%d.%H%M%S"`
+#echo version: $VERSION
+
 FSPROJNAMES="VersionOne.Parsers"
 
 
@@ -75,6 +79,8 @@ MSBuild.exe $SOLUTION_FILE -m \
 
 
 # ---- Refresh nuget packages -------------------------------------------------
+
+set
 
 nuget_packages_refresh
 
