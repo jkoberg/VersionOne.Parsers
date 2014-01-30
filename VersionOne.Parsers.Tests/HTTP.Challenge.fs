@@ -9,6 +9,18 @@ let ( =?= ) (actual:obj) (expected:obj) =
   Assert.AreEqual(actual, expected)
 
 
+let [<Test>] ``just parameters`` () = 
+  let sample = "realm=\"The So-Called, \\\"Realm\\\"\", scope=\"apiv1\", error=\"invalid_token\""
+
+  //printfn "testing %s" sample
+  Parsers.parseParams sample =?= [
+    "realm", "The So-Called, \"Realm\""
+    "scope", "apiv1"  
+    "error", "invalid_token"
+    ]
+
+
+
 let [<Test>] ``single www-authenticate challenge`` () = 
   let sample = "Bearer realm=\"V1Production\", scope=\"apiv1\", error=\"invalid_token\""
   //printfn "testing %s" sample
