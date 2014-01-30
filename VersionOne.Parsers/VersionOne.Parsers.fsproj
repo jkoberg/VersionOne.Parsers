@@ -60,6 +60,7 @@
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Primitives.fs" />
     <Compile Include="HTTP.Challenge.fs" />
+    <Compile Include="HTTP.Accepts.fs" />
     <None Include="packages.config" />
   </ItemGroup>
   <PropertyGroup>
