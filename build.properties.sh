@@ -1,5 +1,5 @@
 # This file must be updated by hand when you wish to bump the version number.
-export VERSION_NUMBER="1.0.0"
+export VERSION_NUMBER="1.0.1"
 
 export CONTINUOUS_REPO_URL="http://www.myget.org/F/versionone/api/v2/"
 export STABLE_REPO_URL="http://packages.nuget.org/api/v2/"
