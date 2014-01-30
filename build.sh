@@ -79,8 +79,7 @@ MSBuild.exe $SOLUTION_FILE -m \
 
 # ---- Refresh nuget packages -------------------------------------------------
 
-unset PLATFORM
-unset CONFIGURATION
+
 
 nuget_packages_refresh
 
