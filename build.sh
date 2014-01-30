@@ -107,7 +107,5 @@ MSBuild.exe $SOLUTION_FILE \
 # -- make nupkg
 
 for PROJNAME in $FSPROJNAMES; do
-  pushd "$PROJNAME"
-    ../.nuget/nuget.exe pack "$PROJNAME.fsproj" -Properties Configuration="$Configuration";Platform="$Platform"
-  popd
+  powershell -Command ".\\.nuget\\nuget.exe pack $PROJNAME\\$PROJNAME.fsproj -Prop Configuration=$Configuration"
 done
