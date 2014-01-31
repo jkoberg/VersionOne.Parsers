@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>VersionOne.Parsers.Tests</RootNamespace>
     <AssemblyName>VersionOne.Parsers.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFSharpCoreVersion>4.3.0.0</TargetFSharpCoreVersion>
     <Name>VersionOne.Parsers.Tests</Name>
     <TargetFrameworkProfile>
@@ -63,8 +63,8 @@
     <Compile Include="Primitives.fs" />
     <Compile Include="HTTP.Challenge.fs" />
     <Compile Include="HTTP.Accepts.fs" />
-    <None Include="packages.config" />
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VersionOne.Parsers\VersionOne.Parsers.fsproj">
